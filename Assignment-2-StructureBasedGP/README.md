@@ -24,8 +24,7 @@ Assignment 2/
 │   └── Residential_Energy_Dataset_UK- 2014-2020.csv
 ├── GP_Assignment2.jar          — Executable JAR
 ├── manifest.txt
-├── report.tex                  — Assignment report (LaTeX source)
-├── report.md                   — Assignment report (Markdown)
+├── u23618583_YM_Kamangu_710_Assignment_2_Report.pdf — Assignment report
 ├── results.jpeg                — Terminal output screenshot (10 runs)
 ├── results_output.txt          — Full stdout from 10-run experiment
 └── README.md                   — This file
