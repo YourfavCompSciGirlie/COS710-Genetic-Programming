@@ -10,7 +10,7 @@
 
 ---
 
-## 📘 Module Overview
+## Module Overview
 
 This module provides an in‑depth study of **Genetic Programming (GP)**, a sub‑field of Evolutionary Computation.  
 Topics covered include:
@@ -25,7 +25,7 @@ All assignments are implemented as individual programming tasks, applying the te
 
 ---
 
-## 📂 Assignments
+## Assignments
 
 | # | Assignment | Topic | Due Date |
 |---|------------|-------|----------|
@@ -40,7 +40,7 @@ Each assignment folder contains:
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - [Python 3.x](https://www.python.org/) (if using Python) / [C++ compiler] (if using C++)  
