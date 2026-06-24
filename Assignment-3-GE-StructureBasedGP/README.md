@@ -19,8 +19,8 @@ Assignment 3/
 ├── out/                           Compiled class files
 ├── manifest.txt                   Jar manifest (Main-Class: Main)
 ├── GE_Assignment3.jar             Runnable jar (compiled code)
-├── report.tex                     LaTeX source for the report
 ├── results_output.txt             Captured terminal output of the full run
+├── u23618583_YM_Kamangu_710_Assignment_3_Report.pdf  Report
 └── README.md                      This file
 ```
 
