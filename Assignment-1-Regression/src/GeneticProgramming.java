@@ -556,38 +556,30 @@ public class GeneticProgramming {
                 newPopulation[e] = population[eliteIdx[e]].copy();
             }
 
-            // ── Determine exact operator counts from rates ────────────────────
-            // Rates must sum to 1. Each rate describes exactly what fraction of
-            // the non-elite slots is created by that operator, guaranteeing the
-            // intended distribution regardless of random variation.
-            int nonEliteSlots  = populationSize - eliteCount;
-            int crossoverCount = (int) Math.round(nonEliteSlots * crossoverRate);
-            int mutationCount  = nonEliteSlots - crossoverCount; // remainder = mutation
-
-            // Build a slot-type array and shuffle it so operator assignments
-            // are random across positions (not all crossover first, then mutation).
-            // 0 = crossover, 1 = mutation
-            int[] slotType = new int[nonEliteSlots];
-            for (int i = crossoverCount; i < nonEliteSlots; i++) slotType[i] = 1;
-            // Fisher-Yates shuffle
-            for (int i = nonEliteSlots - 1; i > 0; i--) {
-                int j = rng.nextInt(i + 1);
-                int tmp = slotType[i]; slotType[i] = slotType[j]; slotType[j] = tmp;
-            }
-
             for (int i = eliteCount; i < populationSize; i++) {
+                double roll = rng.nextDouble();
                 Tree offspring;
-                int slotIdx = i - eliteCount;
 
-                if (slotType[slotIdx] == 0) {
-                    // ── Crossover ─────────────────────────────────────────────
+                if (roll < crossoverRate) {
+                    // ── Crossover (+ optional mutation applied on top) ─────────
                     int p1 = tournamentSelection(fitnesses);
                     int p2 = tournamentSelection(fitnesses);
                     offspring = crossover(population[p1], population[p2]);
-                } else {
-                    // ── Mutation ──────────────────────────────────────────────
+
+                    // Chain a mutation with independent probability
+                    if (rng.nextDouble() < mutationRate) {
+                        offspring = mutate(offspring);
+                    }
+
+                } else if (roll < crossoverRate + mutationRate) {
+                    // ── Mutation only ─────────────────────────────────────────
                     int p = tournamentSelection(fitnesses);
                     offspring = mutate(population[p]);
+
+                } else {
+                    // ── Reproduction (copy of tournament winner) ──────────────
+                    int p = tournamentSelection(fitnesses);
+                    offspring = population[p].copy();
                 }
 
                 newPopulation[i] = offspring;
