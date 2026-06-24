@@ -1,12 +1,13 @@
 # COS710 – Genetic Programming
 
-[![GitHub repo size](https://img.shields.io/github/repo-size/your-username/COS710-Genetic-Programming)](https://github.com/your-username/COS710-Genetic-Programming)
-[![GitHub language count](https://img.shields.io/github/languages/count/your-username/COS710-Genetic-Programming)](https://github.com/your-username/COS710-Genetic-Programming)
-[![GitHub top language](https://img.shields.io/github/languages/top/your-username/COS710-Genetic-Programming)](https://github.com/your-username/COS710-Genetic-Programming)
+> **Official Module:** Artificial Intelligence (I) 710 (COS 710)  
+> **University of Pretoria** – Honours | NQF Level 08 | 15 credits  
+> **Lecturer:** Prof. Nelishia Pillay  
+> **Semester 1, 2026**
 
-> **University of Pretoria** – Honours module (COS710)  
-> **Semester 1, 2026** | NQF Level 08 | 15 credits  
-> Lecturer: Prof. Nelishia Pillay
+![GitHub repo size](https://img.shields.io/github/repo-size/YourfavCompSciGirlie/COS710-Genetic-Programming)
+![GitHub language count](https://img.shields.io/github/languages/count/YourfavCompSciGirlie/COS710-Genetic-Programming)
+![GitHub top language](https://img.shields.io/github/languages/top/YourfavCompSciGirlie/COS710-Genetic-Programming)
 
 ---
 
@@ -17,39 +18,54 @@ Topics covered include:
 
 - The standard GP algorithm (initialisation, fitness, selection, genetic operators)
 - Symbolic regression & data classification
-- Grammar‑based GP & Grammatical Evolution (GE)
-- Advanced topics: iteration, recursion, memory, data structures, modularisation, architecture‑altering operations
-- Recent developments: structure‑based GP & transfer learning
+- Grammar‑based GP & **Grammatical Evolution (GE)**
+- Advanced topics: iteration, recursion, memory, data structures, modularisation
+- Recent developments: **Structure‑Based GP (SBGP)** & transfer learning
 
-All assignments are implemented as individual programming tasks, applying the techniques studied in class.
+All assignments are implemented as individual programming tasks in **Java**, applying the techniques studied in class to predict UK residential electricity load.
 
 ---
 
-## Assignments
+## Assignments Overview
 
-| # | Assignment | Topic | Due Date |
-|---|------------|-------|----------|
-| 1 | [Regression](./Assignment-1-Regression) | Symbolic regression using standard GP | 16 March 2026 |
-| 2 | [Structure‑Based GP](./Assignment-2-StructureBasedGP) | Structure‑based genetic programming | 20 April 2026 |
-| 3 | [GE + Structure‑Based GP](./Assignment-3-GE-StructureBasedGP) | Grammatical Evolution combined with structure‑based GP | 24 May 2026 |
+| # | Assignment | Method | Key Focus | Due Date |
+|:-|------------|--------|-----------|----------|
+| 1 | [Regression](./Assignment-1-Regression) | Canonical Tree‑Based GP | Symbolic regression with parsimony pressure | 16 March 2026 |
+| 2 | [Structure‑Based GP](./Assignment-2-StructureBasedGP) | SBGP | Structural fitness sharing (prefix matching) | 20 April 2026 |
+| 3 | [GE + SBGP](./Assignment-3-GE-StructureBasedGP) | SBGE | Grammatical Evolution + structural sharing | 24 May 2026 |
 
 Each assignment folder contains:
-- Source code
-- A brief `README.md` with specific compilation/execution instructions
-- Any required datasets (if applicable)
+- Complete source code (`/src`)
+- Pre‑built executable JAR file
+- Detailed `README.md` with compilation/execution instructions
+- Assignment report (PDF + LaTeX source)
+- Dataset (`/documentation`)
+
+---
+
+## Key Results Summary
+
+A comparison of the three approaches on the same regression task (10 independent runs):
+
+| Method | Avg Train MSE | Best Train MSE | Avg Test MSE | Avg Runtime |
+|--------|---------------|----------------|--------------|-------------|
+| **A1 – Canonical GP** | 0.00014812 | 0.00014257 | 0.00017889 | ~5 min |
+| **A2 – SBGP** | 0.00014611 | 0.00014120 | 0.00017394 | ~11 min |
+| **A3 – SBGE** | 0.00019314 | 0.00016529 | 0.00023663 | ~35 sec |
+
+> **Insight:** Structure‑based GP (A2) improved test generalisation and reduced variance by **48%** compared to canonical GP, at the cost of runtime. Grammatical Evolution (A3) was significantly faster but traded off some accuracy.
 
 ---
 
 ## Getting Started
 
 ### Prerequisites
-- [Python 3.x](https://www.python.org/) (if using Python) / [C++ compiler] (if using C++)  
-- [DEAP](https://deap.readthedocs.io/), [NumPy](https://numpy.org/), etc. *(list your dependencies)*
+- **Java JDK 17+** (Download from [Adoptium](https://adoptium.net/temurin/releases/?version=17))
+- No external libraries — all code uses pure standard Java.
 
 ### Running an Assignment
-Navigate to the desired assignment folder and follow the instructions in its `README.md`.  
-For example:
+Navigate to the desired assignment folder and run its pre‑built JAR:
 
 ```bash
 cd Assignment-1-Regression
-python regression.py
+java -jar GP_Assignment1.jar
